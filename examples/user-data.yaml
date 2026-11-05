@@ -1,0 +1,10 @@
+#cloud-config
+# Пример user-data. hostname и ssh_authorized_keys приложение подставляет само
+# из полей hostname / ssh_key запроса POST /vms.
+packages:
+  - htop
+write_files:
+  - path: /etc/motd
+    content: "Welcome to Cloud Maker VM\n"
+runcmd:
+  - echo "cloud-init finished" > /var/log/cm-done

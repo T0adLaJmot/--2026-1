@@ -1,0 +1,17 @@
+services:
+  cloudmaker:
+    build: .
+    container_name: cloudmaker
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      QUOTA_CPUS: "8"
+      QUOTA_RAM_MB: "8192"
+      DATA_DIR: /var/lib/cloudmaker
+      LIBVIRT_URI: qemu:///system
+    volumes:
+      # управление через хостовый libvirt (пункт 5)
+      - /var/run/libvirt/libvirt-sock:/var/run/libvirt/libvirt-sock
+      # ВАЖНО: путь одинаковый на хосте и в контейнере, т.к. qemu запускается на хосте
+      - /var/lib/cloudmaker:/var/lib/cloudmaker
