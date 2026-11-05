@@ -35,7 +35,7 @@ ls -l /dev/kvm /var/run/libvirt/libvirt-sock   # оба должны сущес�
 ./scripts/base-vm.sh
 ```
 Что происходит: 
-(1) скачивается облачный образ Ubuntu; 
+(1) скачивается облачный образ Ubuntu;  
 (2) `qemu-img` создаёт copy-on-write диск поверх него;
 (3) `genisoimage` собирает cloud-init seed-ISO (hostname + SSH-ключ);
 (4) `virt-install --import --graphics none` определяет и запускает ВМ в libvirt (QEMU/KVM);
